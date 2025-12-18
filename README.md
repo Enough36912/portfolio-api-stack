@@ -1,16 +1,19 @@
-﻿# Portfolio API Stack (Docker + FastAPI + Postgres)
-Run a production-style local stack with 1 command.
+# Portfolio API Stack (FastAPI + Postgres + Prometheus Metrics)
 
-## Run
+A Dockerized FastAPI service with Postgres persistence, a simple visit counter, health checks, and a `/metrics` endpoint for Prometheus-style observability.
+
+## Quick start
+```bash
 docker compose up -d --build
+```
 
-## Test
-- Health:  http://localhost:8080/health
-- Visits:  http://localhost:8080/visits
-- Inc:     POST http://localhost:8080/visits/increment
+## Endpoints
+- `GET /` (service info)
+- `GET /health` (db health)
+- `GET /visits` (current count)
+- `POST /visits/increment` (increment count)
+- `GET /metrics` (Prometheus metrics)
 
-## Docs (Swagger UI)
-http://localhost:8080/docs
-
-## Stop
-docker compose down
+## Local URLs
+- Swagger UI: http://localhost:8080/docs
+- Metrics: http://localhost:8080/metrics
